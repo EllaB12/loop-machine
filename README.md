@@ -2,6 +2,8 @@
 
 This loop machine simulates a Looper - a tool for creating music loops and plays recordings back in real-time.
 
+By clicking on one of the pad loops, the loop will start playing and the pad will turn green
+
 ## Get started
 
 ### Clone the repo
