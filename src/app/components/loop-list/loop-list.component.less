@@ -1,0 +1,26 @@
+.loop-list-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center; 
+    width: 70%;
+    margin: 40px auto;
+}
+
+li {
+    width: 150px;
+}
+
+.loop-number {
+    font-family: 'Concert One', cursive;
+    font-size: 34px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .loop-list-container {
+        grid-template-columns: repeat(2, 1fr);
+        width: unset;
+        margin: 30px 20px;
+    }
+}

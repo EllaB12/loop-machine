@@ -1,0 +1,8 @@
+<section *ngIf="loops">
+    <ul class="loop-list-container">
+        <li *ngFor="let loop of loops; let i = index">
+            <span class="loop-number">{{i + 1}}</span>
+            <loop-preview [loop]="loop" (onPlayLoop)="addLoop($event)" (onPauseLoop)="removeLoop($event)"></loop-preview>
+        </li>
+    </ul>
+</section>

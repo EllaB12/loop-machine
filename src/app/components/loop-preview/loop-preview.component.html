@@ -1,0 +1,21 @@
+<section class="loop-preview-container">
+    <audio #audioElement preload="metadata">
+        <source [src]="getLoopSrc(loop.name)" type="audio/mpeg">
+    </audio>
+    <button class="looper-item" (click)="paused ? play() : pause()" [ngClass]="{'pause': loop.startTime > 0, 'pending': paused, 'play': !paused}">
+        <span class="play-icon"></span>
+        <span class="separator-icon">/</span>
+        <span class="pause-icon"></span>
+    </button>
+
+    <div class="progress-bar">
+        <div class="range fade-in" [ngStyle]="{'width': currentTime / duration * 100 +'%' }"></div>
+    </div>
+
+    <div class="loop-name-container">
+        <div class="loop-name">{{loop.name}}</div>
+    </div>
+
+</section>
+
+
