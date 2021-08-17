@@ -4,7 +4,7 @@ import { Loop } from '../models/loop.model';
 
 const LOOPS = [
   {
-    name: 'SilentStar', 
+    name: 'SilentStar_120_Em_OrganSynth', 
     isPlay: false,
     startTime: 0,
     endTime: 0

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {ProgressBarModule} from "angular-progress-bar"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,8 +14,7 @@ import { LoopPreviewComponent } from './components/loop-preview/loop-preview.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ProgressBarModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

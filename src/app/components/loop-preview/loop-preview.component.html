@@ -1,8 +1,8 @@
 <section class="loop-preview-container">
-    <audio #audioElement preload="metadata">
+    <audio #audioElement>
         <source [src]="getLoopSrc(loop.name)" type="audio/mpeg">
     </audio>
-    <button class="looper-item" (click)="paused ? play() : pause()" [ngClass]="{'pause': loop.startTime > 0, 'pending': paused, 'play': !paused}">
+    <button class="looper-item" (click)="paused ? play() : pause()" [ngClass]="{'pending': loop.startTime > 0, 'pause': paused, 'play': !paused}">
         <span class="play-icon"></span>
         <span class="separator-icon">/</span>
         <span class="pause-icon"></span>
@@ -15,7 +15,6 @@
     <div class="loop-name-container">
         <div class="loop-name">{{loop.name}}</div>
     </div>
-
 </section>
 
 

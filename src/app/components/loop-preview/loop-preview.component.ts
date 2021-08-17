@@ -6,22 +6,16 @@ import { Loop } from '../../models/loop.model';
   templateUrl: './loop-preview.component.html',
   styleUrls: ['./loop-preview.component.less']
 })
-export class LoopPreviewComponent implements OnInit {
+export class LoopPreviewComponent {
   @Input() loop!: Loop;
   @Output() onPlayLoop: EventEmitter<Loop> = new EventEmitter();
   @Output() onPauseLoop: EventEmitter<Loop> = new EventEmitter();
 
-  @ViewChild('audioElement', { static: false })
-  public audioRef!: ElementRef;
+  @ViewChild('audioElement', { static: false }) public audioRef!: ElementRef;
   private audio!: HTMLMediaElement;
   timer: any;
-  duration!: any;
+  duration!: number;
   currentTime: number = 0;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit(): void {
     this.audio = this.audioRef.nativeElement;
@@ -51,17 +45,9 @@ export class LoopPreviewComponent implements OnInit {
     if (this.audio) {
       if (!this.loop.isPlay) {
         if(this.loop.startTime > 0) {
-          this.loop.startTime = 0;
-          this.onPauseLoop.emit(this.loop);
-          clearTimeout(this.timer)
+          this.pauseFirstLoop();
         } else {
-          this.onPlayLoop.emit(this.loop);
-
-           this.timer = setTimeout(()=> {
-            this.audio.play();
-            this.loop.isPlay = true;
-            this.loop.startTime = 0;
-          }, this.loop.startTime * 1000);
+          this.playFirstLoop();
         }
       } 
 
@@ -74,5 +60,21 @@ export class LoopPreviewComponent implements OnInit {
         this.audio.play()
       }
     }
+  }
+
+  private pauseFirstLoop() {
+    this.loop.startTime = 0;
+    this.onPauseLoop.emit(this.loop);
+    clearTimeout(this.timer);
+  }
+
+  private playFirstLoop() {
+    this.onPlayLoop.emit(this.loop);
+
+    this.timer = setTimeout(() => {
+      this.audio.play();
+      this.loop.isPlay = true;
+      this.loop.startTime = 0;
+    }, this.loop.startTime * 1000);
   }
 }

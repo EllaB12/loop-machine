@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { LoopService } from './services/loop.service';
-
-interface Loop {
-  name: string;
-  isPlay: boolean;
-  startTime: number;
-  endTime: number;
-}
+import { Loop } from './models/loop.model';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +9,7 @@ interface Loop {
 })
 export class AppComponent {
   loops: Loop[] = [];
+  title = 'Loop Machine';
 
   constructor(private loopService: LoopService) { 
     this.loopService.loadLoops();
